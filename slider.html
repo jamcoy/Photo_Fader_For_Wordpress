@@ -10,19 +10,12 @@
     </head>
     <body>
 
-        <p>Select two images with a similar aspect ratio, then drag the slider</p>
+    <div id="slider-control"></div>
 
-        <input type="file" id="file_input1">
-        <input type="file" id="file_input2">
-
-        <div id="slider-control"></div>
-
-        <div id="expanding-container">
-            <canvas class="fader-canvasses" id="fader-canvas-top"></canvas>
-            <canvas class="fader-canvasses" id="fader-canvas-bottom"></canvas>
-        </div>
-
-        <hr>
+    <div id="expanding-container">
+        <canvas class="fader-canvasses" id="fader-canvas-top"></canvas>
+        <canvas class="fader-canvasses" id="fader-canvas-bottom"></canvas>
+    </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

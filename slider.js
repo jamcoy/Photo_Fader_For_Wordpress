@@ -1,3 +1,32 @@
+var bottomImage = "https://jamcoy.com/img/readme_images/chart.png";
+var topImage = "https://jamcoy.com/img/readme_images/Refuel_history.png";
+
+var imgBottom = new Image;
+
+imgBottom.src = bottomImage;
+
+var c = document.getElementById("fader-canvas-bottom");
+var ctx = c.getContext("2d");
+
+ctx.canvas.height = imgBottom.height;
+ctx.canvas.width = imgBottom.width;
+
+ctx.drawImage(imgBottom, 0, 0);
+
+var imgTop = new Image;
+
+imgTop.src = topImage;
+
+var c = document.getElementById("fader-canvas-top");
+var ctx = c.getContext("2d");
+
+ctx.canvas.height = imgTop.height;
+ctx.canvas.width = imgTop.width;
+
+ctx.drawImage(imgTop, 0, 0);
+
+resizeContainer();
+
 $( function() {
     $("#slider-control" ).slider();
     $("#fader-canvas-top").css('opacity', 0);
@@ -7,53 +36,6 @@ $( "#slider-control" ).on( "slide", function() {
     var value = $( "#slider-control" ).slider( "option", "value" );
     $("#fader-canvas-top").css('opacity', (value/100));
 } );
-
-
-$("#file_input1").change(function(e){
-
-    var URL = window.URL;
-    var url = URL.createObjectURL(e.target.files[0]);
-    var img = new Image();
-    img.src = url;
-
-    img.onload = function() {
-
-        var c = document.getElementById("fader-canvas-bottom");
-        var ctx = c.getContext("2d");
-
-        ctx.canvas.height = img.height;
-        ctx.canvas.width = img.width;
-
-        ctx.drawImage(img, 0, 0);
-
-        resizeContainer();
-
-    }
-
-});
-
-$("#file_input2").change(function(e){
-
-    var URL = window.URL;
-    var url = URL.createObjectURL(e.target.files[0]);
-    var img = new Image();
-    img.src = url;
-
-    img.onload = function() {
-
-        var c = document.getElementById("fader-canvas-top");
-        var ctx = c.getContext("2d");
-
-        ctx.canvas.height = img.height;
-        ctx.canvas.width = img.width;
-
-        ctx.drawImage(img, 0, 0);
-
-        resizeContainer();
-
-    }
-
-});
 
 window.onresize = function() {
     resizeContainer();
