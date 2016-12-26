@@ -1,11 +1,11 @@
 $( function() {
-    $( "#slider" ).slider();
-    $("#myCanvas2").css('opacity', 0);
+    $("#slider-control" ).slider();
+    $("#fader-canvas-top").css('opacity', 0);
 } );
 
-$( "#slider" ).on( "slide", function() {
-    var value = $( "#slider" ).slider( "option", "value" );
-    $("#myCanvas2").css('opacity', (value/100));
+$( "#slider-control" ).on( "slide", function() {
+    var value = $( "#slider-control" ).slider( "option", "value" );
+    $("#fader-canvas-top").css('opacity', (value/100));
 } );
 
 
@@ -18,31 +18,15 @@ $("#file_input1").change(function(e){
 
     img.onload = function() {
 
-        img_width = img.width;
-        img_height = img.height;
-
-        var new_x = 0;
-        var new_y = 0;
-
-        if (img_width > img_height) {
-            new_x = 600;
-            new_y = (600*img_height)/img_width;
-        }
-
-        else if (img_height > img_width) {
-            new_x = (600*img_width)/img_height;
-            new_y = 600;
-        }
-
-        else {
-            new_x = 600;
-            new_y = 600;
-        }
-
-        var c = document.getElementById("myCanvas1");
+        var c = document.getElementById("fader-canvas-bottom");
         var ctx = c.getContext("2d");
 
-        ctx.drawImage(img, 0, 0, new_x, new_y);
+        ctx.canvas.height = img.height;
+        ctx.canvas.width = img.width;
+
+        ctx.drawImage(img, 0, 0);
+
+        resizeContainer();
 
     }
 
@@ -57,32 +41,34 @@ $("#file_input2").change(function(e){
 
     img.onload = function() {
 
-        img_width = img.width;
-        img_height = img.height;
-
-        var new_x = 0;
-        var new_y = 0;
-
-        if (img_width > img_height) {
-            new_x = 600;
-            new_y = (600*img_height)/img_width;
-        }
-
-        else if (img_height > img_width) {
-            new_x = (600*img_width)/img_height;
-            new_y = 600;
-        }
-
-        else {
-            new_x = 600;
-            new_y = 600;
-        }
-
-        var c = document.getElementById("myCanvas2");
+        var c = document.getElementById("fader-canvas-top");
         var ctx = c.getContext("2d");
 
-        ctx.drawImage(img, 0, 0, new_x, new_y);
+        ctx.canvas.height = img.height;
+        ctx.canvas.width = img.width;
+
+        ctx.drawImage(img, 0, 0);
+
+        resizeContainer();
 
     }
 
 });
+
+window.onresize = function() {
+    resizeContainer();
+};
+
+$(window).on("orientationchange",function(){
+    resizeContainer();
+});
+
+function resizeContainer(){
+    var top_height = $("#fader-canvas-top").height();
+    var bottom_height = $("#fader-canvas-bottom").height();
+    if (top_height > bottom_height) {
+        $("#expanding-container").height(top_height);
+    } else {
+        $("#expanding-container").height(bottom_height);
+    }
+}

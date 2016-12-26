@@ -5,24 +5,24 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="slider.css">
     </head>
     <body>
 
-        <p>Select two images, then drag the slider</p>
+        <p>Select two images with a similar aspect ratio, then drag the slider</p>
 
         <input type="file" id="file_input1">
         <input type="file" id="file_input2">
 
+        <div id="slider-control"></div>
+
+        <div id="expanding-container">
+            <canvas class="fader-canvasses" id="fader-canvas-top"></canvas>
+            <canvas class="fader-canvasses" id="fader-canvas-bottom"></canvas>
+        </div>
+
         <hr>
-
-        <div id="slider"></div>
-
-        <hr>
-
-        <canvas id="myCanvas1" width="600" height="600"></canvas>
-        <canvas id="myCanvas2" width="600" height="600"></canvas>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

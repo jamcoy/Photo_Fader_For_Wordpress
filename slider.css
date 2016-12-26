@@ -1,13 +1,23 @@
-canvas {
+.fader-canvasses {
     position: absolute;
-    left: 10px;
+    left: 0;
+    width: 100%;
 }
 
-#myCanvas2 {
+#fader-canvas-top {
     z-index: 1000;
 }
 
-#slider {
-    margin-left: 10px;
-    margin-right: 10px;
+#fader-canvas-bottom {
+    z-index: 999;
+}
+
+#slider-control {
+    margin: 12px;
+}
+
+#expanding-container {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
