@@ -1,5 +1,5 @@
-var bottomImage = "https://jamcoy.com/img/readme_images/chart.png";
-var topImage = "https://jamcoy.com/img/readme_images/Refuel_history.png";
+var topImage = "https://jamcoy.com/img/readme_images/chart.png";
+var bottomImage = "https://jamcoy.com/img/readme_images/Refuel_history.png";
 
 var imgBottom = new Image;
 
@@ -17,8 +17,8 @@ var imgTop = new Image;
 
 imgTop.src = topImage;
 
-var c = document.getElementById("fader-canvas-top");
-var ctx = c.getContext("2d");
+c = document.getElementById("fader-canvas-top");
+ctx = c.getContext("2d");
 
 ctx.canvas.height = imgTop.height;
 ctx.canvas.width = imgTop.width;
