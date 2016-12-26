@@ -1,0 +1,13 @@
+canvas {
+    position: absolute;
+    left: 10px;
+}
+
+#myCanvas2 {
+    z-index: 1000;
+}
+
+#slider {
+    margin-left: 10px;
+    margin-right: 10px;
+}
