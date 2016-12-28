@@ -10,31 +10,32 @@ $("#photo-fader").append('<div id="slider-control"></div>' +
 var $sliderControl = $("#slider-control");
 var $faderCanvasTop = $("#fader-canvas-top");
 
-var imgBottom = new Image;
+window.onload = function () {
+    var imgBottom = new Image;
+    imgBottom.src = bottomImage;
 
-imgBottom.src = bottomImage;
+    imgBottom.onload = function () {
+        var c = document.getElementById("fader-canvas-bottom");
+        var ctx = c.getContext("2d");
+        ctx.canvas.height = imgBottom.height;
+        ctx.canvas.width = imgBottom.width;
+        ctx.drawImage(imgBottom, 0, 0);
+        resizeContainer();
+    };
 
-var c = document.getElementById("fader-canvas-bottom");
-var ctx = c.getContext("2d");
+    var imgTop = new Image;
+    imgTop.src = topImage;
 
-ctx.canvas.height = imgBottom.height;
-ctx.canvas.width = imgBottom.width;
+    imgTop.onload = function () {
+        c = document.getElementById("fader-canvas-top");
+        ctx = c.getContext("2d");
+        ctx.canvas.height = imgTop.height;
+        ctx.canvas.width = imgTop.width;
+        ctx.drawImage(imgTop, 0, 0);
+        resizeContainer();
+    };
 
-ctx.drawImage(imgBottom, 0, 0);
-
-var imgTop = new Image;
-
-imgTop.src = topImage;
-
-c = document.getElementById("fader-canvas-top");
-ctx = c.getContext("2d");
-
-ctx.canvas.height = imgTop.height;
-ctx.canvas.width = imgTop.width;
-
-ctx.drawImage(imgTop, 0, 0);
-
-resizeContainer();
+};
 
 $(function() {
     $sliderControl.slider();
